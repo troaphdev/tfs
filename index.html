@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Simple Flight Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div>Loading...</div>
+        <div id="loading-progress">0%</div>
+    </div>
+
+    <!-- Main Canvas for Rendering -->
+    <canvas id="simulator-canvas"></canvas>
+
+    <!-- Heads-Up Display (HUD) -->
+    <div id="hud">
+        <div id="hud-left">
+            <div>Throttle: <span id="throttle-value">0</span>%</div>
+            <div>Speed: <span id="speed-value">0</span> knots</div>
+            <div>Altitude: <span id="altitude-value">0</span> ft</div>
+        </div>
+        <div id="hud-center">
+            <div id="compass">
+                <div id="compass-needle">N</div>
+                <!-- Compass rose might be added via CSS background or JS -->
+            </div>
+            <div id="stall-warning">STALL WARNING!</div>
+        </div>
+        <div id="hud-right">
+            <div id="minimap">
+                <!-- Minimap content will be drawn or updated by JS -->
+                <div id="minimap-player"></div>
+                <!-- Add minimap markers for checkpoints etc. here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Controls (Optional - Overlay) -->
+    <div id="mobile-controls">
+        <div id="joystick-area"></div>
+        <div id="throttle-area"></div>
+    </div>
+
+    <!-- Game Mode Selection (Example) -->
+    <div id="mode-selection" style="display: none;">
+         <button onclick="setGameMode('Free Flight')">Free Flight</button>
+         <button onclick="setGameMode('Checkpoint')">Checkpoint Challenge</button>
+         <button onclick="setGameMode('Endless')">Endless City</button>
+    </div>
+
+    <!-- Import Libraries -->
+    <!-- Use CDN links or local copies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cannon-es/0.19.0/cannon-es.min.js"></script>
+    <!-- Optional: Cannon.js Debugger -->
+    <!-- <script src="path/to/cannon-es-debugger.js"></script> -->
+
+    <!-- Main Application Logic -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>

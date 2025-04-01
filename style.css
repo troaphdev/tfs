@@ -1,0 +1,166 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+    font-family: sans-serif;
+    color: white;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+#simulator-canvas {
+    display: block; /* Remove potential bottom margin */
+    width: 100vw;
+    height: 100vh;
+}
+
+#loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    z-index: 100;
+    transition: opacity 0.5s ease-out;
+}
+
+#loading-progress {
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+#hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicking through HUD */
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    box-sizing: border-box; /* Include padding in width/height */
+    z-index: 10;
+}
+
+#hud-left, #hud-right, #hud-center {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#hud-left { align-items: flex-start; }
+#hud-right { align-items: flex-end; }
+#hud-center { align-items: center; }
+
+#compass {
+    width: 80px;
+    height: 80px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    /* Background image for compass rose recommended */
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#compass-needle {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    /* Rotation will be set by JS */
+}
+
+#minimap {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(0, 50, 0, 0.5);
+    border: 1px solid rgba(0, 255, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+#minimap-player {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: yellow;
+    border-radius: 50%;
+    /* Position set by JS */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* Add styles for minimap markers (buildings, AI, checkpoints) */
+
+#stall-warning {
+    margin-top: 10px;
+    color: red;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: none; /* Hidden by default */
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+#mobile-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%; /* Adjust height as needed */
+    display: none; /* Hidden by default, shown for touch devices */
+    pointer-events: none; /* Allow touches to pass through container */
+    z-index: 20;
+}
+
+#joystick-area {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    pointer-events: auto; /* Enable touch on this area */
+    /* Add inner circle for visual joystick */
+}
+
+#throttle-area {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    pointer-events: auto; /* Enable touch on this area */
+     /* Add slider indicator */
+}
+
+/* Media query for touch devices */
+@media (hover: none) and (pointer: coarse) {
+    #mobile-controls {
+        display: block;
+    }
+}
