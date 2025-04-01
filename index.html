@@ -9,7 +9,7 @@
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
-        <div>Loading...</div>
+        <div>Loading Assets...</div> <!-- Slightly more descriptive text -->
         <div id="loading-progress">0%</div>
     </div>
 
@@ -52,15 +52,15 @@
          <button onclick="setGameMode('Endless')">Endless City</button>
     </div>
 
-    <!-- Import Libraries FIRST -->
+    <!-- Import Libraries FIRST (Using Globals) -->
     <!-- Use CDN links for static hosting like GitHub Pages -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cannon-es/0.19.0/cannon-es.min.js"></script>
-    <!-- Optional: Cannon.js Debugger (if you use it, find its CDN or bundle it) -->
-    <!-- <script src="path/to/cannon-es-debugger.js"></script> -->
+    <!-- Optional: Cannon.js Debugger (Needs separate script include if used) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/cannon-es-debugger@1.0.0/dist/cannon-es-debugger.js"></script> -->
 
     <!-- Main Application Logic - Load AFTER libraries -->
-    <!-- REMOVED type="module" -->
+    <!-- NO type="module" -->
     <script src="main.js"></script>
 </body>
 </html>
